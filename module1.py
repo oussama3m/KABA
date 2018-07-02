@@ -1,15 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
-import os
-
-from flask import Flask, render_template, request
-
-
-app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-db.init_app(app)
 
 
 class Article(db.Model):
@@ -33,24 +24,11 @@ class Line(db.Model ):
 
 
 
-def main():
-    db.create_all()
-    a = Line(name="pc")
-    db.session.add(a)
-    b=Line.query.filter_by(id=1).all
-    db.session.commit()
-    
-    print( "bb" )
-
-@app.route("/")
-def h():
-    print("hello world")
-    b=Line.query.filter_by(id=1).all
-    return b
 
 
-if __name__ == "__main__":
-    with app.app_context():
-        main()
+
+
+
+
 
     

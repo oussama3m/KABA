@@ -8,7 +8,10 @@ app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
 db.initapp(app)
 
 def main():
-    db.create_all
+    db.create_all()
+    a = Line(name = "tablet")
+    db.session.add(a)
+    db.session.commit()
 
 
 if __name__ = "__main__"
