@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <form method="POST" action="{{ url_for('addArticle') }}">
+        <input type="text" name="name" placeholder="article_name" >
+        <input type="number" name="line_id" placeholder="line_id" >
+        <button type="submit"> add </button>
+    </form>
+
+{% endblock %}

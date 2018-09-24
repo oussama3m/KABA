@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+
+{% block curency_api %}
+
+    <div class="row">
+        <form method="post" action=" {{ url_for('index') }} ">
+            <div class="col">
+
+                <input type="text" name="base" placeholder="base">
+                
+            </div>
+            <div class="col">
+                <input type="text" name="symbol" placeholder="symbol" >
+            </div>
+            <div class="col">
+
+                <button type="submit"> ask </button>
+                
+            </div>
+            <div class="col">
+                <h3>result= {{ send["rate"] }} </h3>
+            </div>
+        </form>
+    </div>
+    
+
+{% endblock %}
+
+
+{% block body %}
+
+
+
+<h1> body </h1>
+{{ send["results"] }}
+<h1>body</h1>
+
+
+{% for id in send["ids"] %}
+    <div class="row">
+        {% for result in send["results"]  %}
+            {% if  result.Line.id == id.id %}
+            <div id="item" class="card box-shadow col-md-3">
+                <h1>{{ result.Line.id}}</h1>
+                <img alt="image{{ id.id }}" style="hight:400px;width:30px" />
+            </div>
+            
+            
+            {% endif %}
+        {% endfor %}
+        <br/>
+        <hr/>
+    </div>
+
+{% endfor %}
+
+<br/>
+
+{{ send["ids"] }}
+
+
+
+{% endblock %}
+
+
